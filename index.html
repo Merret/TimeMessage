@@ -42,7 +42,7 @@ if(data != "xhr.GET Error. statue: 404") {
     location.href="./create.html";
 }
 function loaddoc() {
-    document.title = data.title;
+    document.title = data.title || "Time Limited Message | Time Message";
     a(document.getElementById("card"), data.content, 0);
 }
 function a(t,w,x) {if(x<w.length){setTimeout(function() {t.innerHTML+=w.charAt(x);a(t,w,x+1);},100+Math.floor(Math.random()*200))}}
