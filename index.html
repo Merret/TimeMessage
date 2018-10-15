@@ -44,7 +44,7 @@ if(data != "xhr.GET Error. statue: 404") {
     location.href="./create.html";
 }
 function loaddoc() {
-    a(document.getElementById("card"), data.content+"<br>", 0);
+    a(document.getElementById("card"), data.content+"\n", 0);
 }
 function a(t,w,x) {if(x<w.length){setTimeout(function() {t.innerHTML+=w.charAt(x);a(t,w,x+1);},100+Math.floor((Math.random() * 100))}}
 </script>
