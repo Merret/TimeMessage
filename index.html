@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Time Message</title>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script src="https://cdn.jsdelivr.net/gh/Merret/UsefulJS@0.3/js/xhr.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/Merret/UsefulJS@0.3/js/urldata.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<style>
+.button {
+    cursor: pointer
+}
+</style>
+</head>
+<body>
+<div id="card" class="w3-card w3-container w3-padding" width="100%" height="100%" style="text-align: center">
+</div>
+<script>
+new ClipboardJS('.copy');
+var base = urldata("id");
+var data = xhr.get("https://api.myjson.com/bins/"+base);
+if(data != "xhr.GET Error. statue: 404") {
+    data = JSON.parse(data);
+    loaddoc();
+} else {
+    location.href="./create.html";
+}
+function loaddoc() {
+    document.getElementById("card").innerHTML = data.content;
+}
+</script>
+</body>
+</html>
