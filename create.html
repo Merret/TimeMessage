@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Create | Time Message</title>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script src="https://cdn.jsdelivr.net/gh/Merret/UsefulJS@0.3/js/xhr.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/Merret/UsefulJS@0.3/js/urldata.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<style>
+.button {
+    cursor: pointer
+}
+</style>
+</head>
+<body>
+<div class="w3-card w3-padding w3-display-container" id="bar">
+  <p>
+    <label class="w3-text-blue"><b>Title</b></label>
+    <input class="w3-input w3-border" id="title" type="text">
+  </p>
+  <p>
+    <label class="w3-text-blue"><b>Time Limit</b></label>
+    <input class="w3-input w3-border" id="time" type="text">
+  </p>
+  <span>
+    <button class="w3-btn w3-blue w3-round" id="sc" onclick="create()">Create</button>
+  </span>
+  <span class="w3-display-bottomright w3-padding">
+    <a target="_blank" class="w3-btn w3-green w3-round" id="share">Share</a>
+  </span>
+</div>
+<div id="workspace" class="w3-container w3-padding" style="text-align: center">
+	<p class="w3-text-blue" style="text-align: left"><b>Content</b></p>
+    <textarea cols="60" rows="5" id="content"></textarea>
+</div>
+<script>
+while(document.getElementById("content").offsetWidth<document.getElementById("title").offsetWidth) {
+    ++document.getElementById("content").cols;
+}
+while(document.getElementById("content").offsetHeight<(window.innerHeight-document.getElementById("bar").offsetHeight)*0.9) {
+    ++document.getElementById("content").rows;
+}
+new ClipboardJS('.copy');
+var base = urldata("id");
+document.getElementById("share").href="./?id="+base;
+var data = xhr.get("https://api.myjson.com/bins/"+base);
+if(data != "xhr.GET Error. statue: 404") {
+    data = JSON.parse(data);
+    loaddoc();
+    document.getElementById("content").focus();
+    document.getElementById("sc").innerHTML = "Save";
+    document.getElementById("sc").onclick = function() {update();};
+} else {
+    document.getElementById("title").focus();
+}
+function loaddoc() {
+    document.getElementById("title").value = data.title;
+    document.getElementById("content").value = data.content;
+}
+function create() {
+    var doc = {};
+    doc.title = document.getElementById("title").value;
+    doc.content = document.getElementById("content").value;
+    doc.time = document.getElementById("time").value;
+    location.href = "./?id=" + JSON.parse(xhr.post("https://api.myjson.com/bins", JSON.stringify(doc))).uri.substring(28);
+}
+function update() {
+    data.content = document.getElementById("content").value;
+    data.title = document.getElementById("title").value;
+    data.time = document.getElementById("time").value;
+    xhr.put("https://api.myjson.com/bins/"+base, JSON.stringify(data));
+}
+</script>
+</body>
+</html>
