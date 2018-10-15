@@ -7,7 +7,6 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script src="https://cdn.jsdelivr.net/gh/Merret/UsefulJS@0.3/js/xhr.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/Merret/UsefulJS@0.3/js/urldata.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 <style>
 .button {
@@ -34,7 +33,6 @@
 #d{animation:fading 19s infinite}
 </style>
 <script>
-new ClipboardJS('.copy');
 var base = urldata("id");
 var data = xhr.get("https://api.myjson.com/bins/"+base);
 if(data != "xhr.GET Error. statue: 404") {
