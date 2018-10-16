@@ -24,7 +24,7 @@
 </div>
 <div id="lock" style="display: none;" class="w3-margin w3-center">
 	<i class="fas fa-archive fa-8x"></i>
-	<p>You can't access this message until <span id="cd"></span></p>
+	<p>You can't access this message before <span id="cd-d"></span> Days <span id="cd-h"></span> Hours <span id="cd-m"></span> Minutes <span id="cd-s"></span> Seconds!</p>
 </div>
 <style>
 @keyframes fading{0%{opacity:0}50%{opacity:0.5}100%{opacity:0}}
@@ -56,7 +56,14 @@ function loaddoc() {
 }
 function locked() {
 	document.getElementById("lock").style.display = "block";
-	document.getElementById("cd").innerHTML = parseInt(data.time) - d.getTime();
+	var ss = parseInt((parseInt(data.time) - d.getTime())/1000);
+	var mm = parseInt(ss/60);
+	var hh = parseInt(mm/60);
+	var dd = parseInt(hh/24);
+	document.getElementById("cd-d").innerHTML = dd;
+	document.getElementById("cd-h").innerHTML = hh;
+	document.getElementById("cd-m").innerHTML = mm;
+	document.getElementById("cd-s").innerHTML = ss;
 	document.getElementById("card").style.display = "none";
 }
 function a(t,w,x) {
