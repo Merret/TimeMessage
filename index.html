@@ -50,7 +50,7 @@ if(data != "xhr.GET Error. statue: 404") {
 }
 function loaddoc() {
 	var d = new Date();
-	if(d.getTime()<data.time && data.time) {locked;return;}
+	if(d.getTime()<data.time && data.time) {locked();return;}
     document.title = data.title || "Time Limited Message | Time Message";
     a(document.getElementById("card"), data.content, 0);
 }
