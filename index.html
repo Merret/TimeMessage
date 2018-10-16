@@ -56,7 +56,7 @@ function loaddoc() {
 }
 function locked() {
 	document.getElementById("lock").style.display = "block";
-	document.getElementById("cd").innerHTML = data.time - d.getTime();
+	document.getElementById("cd").innerHTML = parseInt(data.time) - d.getTime();
 	document.getElementById("card").style.display = "none";
 }
 function a(t,w,x) {
