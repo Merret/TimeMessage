@@ -23,7 +23,7 @@
   </p>
   <p>
     <label class="w3-text-blue"><b>Allowed Time After</b></label>
-    <input class="w3-input w3-border" id="time" type="text">
+    <input class="w3-border" id="date" type="date"><input class="w3-border" id="time" type="time">
   </p>
   <span>
   <button class="w3-btn w3-blue w3-round" id="sc" onclick="create()">Create</button>
@@ -60,7 +60,7 @@ function create() {
     var doc = {};
     doc.title = document.getElementById("title").value;
     doc.content = document.getElementById("content").value;
-    doc.time = document.getElementById("time").value;
+    doc.time = Date(document.getElementById("date").value).getTime();
     location.href = "./?id=" + JSON.parse(xhr.post("https://api.myjson.com/bins", JSON.stringify(doc))).uri.substring(28);
 }
 function update() {
