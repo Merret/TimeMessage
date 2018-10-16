@@ -40,6 +40,7 @@
 #e {animation:fading 23s infinite}
 </style>
 <script>
+var d = new Date();
 var base = urldata("id");
 var data = xhr.get("https://api.myjson.com/bins/"+base);
 if(data != "xhr.GET Error. statue: 404") {
@@ -49,13 +50,11 @@ if(data != "xhr.GET Error. statue: 404") {
     location.href="./create.html";
 }
 function loaddoc() {
-	var d = new Date();
 	if(d.getTime()<data.time && data.time) {locked();return;}
     document.title = data.title || "Time Limited Message | Time Message";
     a(document.getElementById("card"), data.content, 0);
 }
 function locked() {
-	var d = new Date();
 	document.getElementById("lock").style.display = "block";
 	document.getElementById("cd").innerHTML = data.time - d.getTime();
 	document.getElementById("card").style.display = "none";
