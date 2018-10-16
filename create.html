@@ -60,7 +60,8 @@ function create() {
     var doc = {};
     doc.title = document.getElementById("title").value;
     doc.content = document.getElementById("content").value;
-    doc.time = Date(document.getElementById("date").value).getTime();
+    var d = new Date(document.getElementById("date").value);
+    doc.time = d.getTime();
     location.href = "./?id=" + JSON.parse(xhr.post("https://api.myjson.com/bins", JSON.stringify(doc))).uri.substring(28);
 }
 function update() {
