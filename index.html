@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 <style>
 .button {
-    cursor: pointer
+	cursor: pointer
 }
 </style>
 </head>
@@ -19,10 +19,11 @@
 <div id="b" style="z-index:-10;width:1000%;height:1000%;position:fixed;background-color:#00cc66;opacity:0;margin:-25%"></div>
 <div id="c" style="z-index:-10;width:1000%;height:1000%;position:fixed;background-color:#3399ff;opacity:0;margin:-25%"></div>
 <div id="d" style="z-index:-10;width:1000%;height:1000%;position:fixed;background-color:#00cc66;opacity:0;margin:-25%"></div>
+<div id="e" style="z-index:-10;width:1000%;height:1000%;position:fixed;background-color:#b76af2;opacity:0;margin:-25%"></div>
 <div style="word-break: break-word;white-space: pre; opacity: 0.8;" id="card" class="w3-card w3-container w3-margin w3-white w3-round-large" width="100%" height="100%" style="text-align: center">
 </div>
 <style>
-@keyframes fading{0%{opacity:0}50%{opacity:1}100%{opacity:0}}
+@keyframes fading{0%{opacity:0}50%{opacity:0.5}100%{opacity:0}}
 
 #a {animation:fading 11s infinite}
 
@@ -31,6 +32,8 @@
 #c{animation:fading 17s infinite}
 
 #d{animation:fading 19s infinite}
+	
+#e{animation:fading 23s infinite}
 </style>
 <script>
 var base = urldata("id");
@@ -42,6 +45,8 @@ if(data != "xhr.GET Error. statue: 404") {
     location.href="./create.html";
 }
 function loaddoc() {
+	var d = new Date();
+	if(d.getTime()<data.time && data.time) {return}
     document.title = data.title || "Time Limited Message | Time Message";
     a(document.getElementById("card"), data.content, 0);
 }

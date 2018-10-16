@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 <style>
 .button {
-    cursor: pointer
+	cursor: pointer
 }
 </style>
 </head>
@@ -22,19 +22,15 @@
     <input class="w3-input w3-border" id="title" type="text">
   </p>
   <p>
-    <label class="w3-text-blue"><b>Time Limit</b></label>
+    <label class="w3-text-blue"><b>Allowed Time After</b></label>
     <input class="w3-input w3-border" id="time" type="text">
   </p>
   <span>
-    <button class="w3-btn w3-blue w3-round" id="sc" onclick="create()">Create</button>
-  </span>
-  <span class="w3-display-bottomright w3-padding">
-    <a target="_blank" class="w3-btn w3-green w3-round" id="share">Share</a>
-  </span>
-</div>
+  <button class="w3-btn w3-blue w3-round" id="sc" onclick="create()">Create</button>
+  </span> <span class="w3-display-bottomright w3-padding"> <a target="_blank" class="w3-btn w3-green w3-round" id="share">Share</a> </span> </div>
 <div id="workspace" class="w3-container w3-padding" style="text-align: center">
-	<p class="w3-text-blue" style="text-align: left"><b>Content</b></p>
-    <textarea cols="60" rows="5" id="content"></textarea>
+  <p class="w3-text-blue" style="text-align: left"><b>Content</b></p>
+  <textarea cols="60" rows="5" id="content"></textarea>
 </div>
 <script>
 while(document.getElementById("content").offsetWidth<document.getElementById("title").offsetWidth) {
