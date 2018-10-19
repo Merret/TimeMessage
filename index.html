@@ -49,7 +49,7 @@ if(data != "xhr.GET Error. statue: 404") {
     location.href="./create.html";
 }
 function loaddoc() {
-	if(d.getTime()<data.time && data.time) {locked();return;}
+	if(d.getTime()+(d.getTimezoneOffset()*60000)<data.time && data.time) {locked();return;}
     document.title = data.title || "Time Limited Message | Time Message";
     a(document.getElementById("card"), data.content, 0);
 }
