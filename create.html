@@ -42,20 +42,22 @@ while(document.getElementById("content").offsetHeight<(window.innerHeight-docume
 new ClipboardJS('.copy');
 var base = urldata("id");
 document.getElementById("share").href="./?id="+base;
-var data = xhr.get("https://api.myjson.com/bins/"+base);
+//var data = xhr.get("https://api.myjson.com/bins/"+base);
 if(data != "xhr.GET Error. statue: 404") {
-    data = JSON.parse(data);
-    loaddoc();
+//    data = JSON.parse(data);
+//    loaddoc();
     document.getElementById("content").focus();
-    document.getElementById("sc").innerHTML = "Save";
-    document.getElementById("sc").onclick = function() {update();};
+//    document.getElementById("sc").innerHTML = "Save";
+//    document.getElementById("sc").onclick = function() {update();};
 } else {
     document.getElementById("title").focus();
 }
+/*
 function loaddoc() {
     document.getElementById("title").value = data.title;
     document.getElementById("content").value = data.content;
 }
+*/
 function create() {
     var doc = {};
     doc.title = document.getElementById("title").value;
@@ -64,12 +66,14 @@ function create() {
     doc.time = d.getTime()+(d.getTimezoneOffset()*60000);
     location.href = "./?id=" + JSON.parse(xhr.post("https://api.myjson.com/bins", JSON.stringify(doc))).uri.substring(28);
 }
+/*
 function update() {
     data.content = document.getElementById("content").value;
     data.title = document.getElementById("title").value;
     data.time = document.getElementById("time").value;
     xhr.put("https://api.myjson.com/bins/"+base, JSON.stringify(data));
 }
+*/
 </script>
 </body>
 </html>
