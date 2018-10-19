@@ -61,7 +61,7 @@ function create() {
     doc.title = document.getElementById("title").value;
     doc.content = document.getElementById("content").value;
     var d = new Date(document.getElementById("date").value);
-    doc.time = d.getTime()-28800000;
+    doc.time = d.getTime()-(d.getTimezoneOffset()*60000);
     location.href = "./?id=" + JSON.parse(xhr.post("https://api.myjson.com/bins", JSON.stringify(doc))).uri.substring(28);
 }
 function update() {
