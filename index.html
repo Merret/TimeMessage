@@ -55,7 +55,7 @@ function loaddoc() {
 }
 function locked() {
 	document.getElementById("lock").style.display = "block";
-	var ss = parseInt((parseInt(data.time) - d.getTime())/1000);
+	var ss = parseInt((parseInt(data.time) - (d.getTime()+(d.getTimezoneOffset()*60000)))/1000);
 	var mm = parseInt(ss/60);
 	var hh = parseInt(mm/60);
 	var dd = parseInt(hh/24);
